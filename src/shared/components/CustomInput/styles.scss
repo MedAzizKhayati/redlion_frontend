@@ -1,0 +1,49 @@
+.custom-input-container {
+    width: 80%;
+    margin-bottom: 20px;
+    position: relative;
+    display: block;
+    flex-direction: column;
+
+    .icon {
+        position: absolute;
+        top: 11px;
+        left: 10px;
+    }
+
+    input:-webkit-autofill {
+        -webkit-text-fill-color: white;
+        -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}
+
+.custom-input {
+    height: 40px;
+    padding: 0 30px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 40px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    color: white;
+    background-color: #14141b;
+    margin-bottom: 5px;
+}
+
+.custom-input:focus,
+.custom-input:hover {
+    border: 2px solid #ccc;
+    outline: none;
+}
+
+.custom-input-error {
+    color: red;
+    margin-left: 10px;
+    font-size: small;
+    border-color: red;
+    font-weight: 400;
+}
