@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Checkbox } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
-export default () => {
+const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
@@ -90,3 +90,5 @@ const loginValidationSchema = yup.object().shape({
         .min(8, ({ min }) => `Password must be at least ${min} characters`)
         .required('Password is required'),
 });
+
+export default LoginPage;

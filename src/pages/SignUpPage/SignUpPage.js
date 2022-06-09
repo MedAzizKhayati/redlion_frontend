@@ -5,7 +5,7 @@ import './styles.scss';
 import { AiOutlineUser, AiOutlineMail, AiFillUnlock } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
-export default () => {
+const SingUpPage = () => {
     return (
         <div className='auth-form'>
             <h1>Sign Up</h1>
@@ -127,3 +127,6 @@ const loginValidationSchema = yup.object().shape({
         .oneOf([yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
 });
+
+
+export default SingUpPage;

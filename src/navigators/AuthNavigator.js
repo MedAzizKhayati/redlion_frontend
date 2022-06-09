@@ -1,7 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { FbAiFormPage, LoginPage, SignUpPage } from "../pages";
 
-export default () => {
+
+const AuthNavigator = () => {
     return (
         <Routes>
             <Route path='/' element={<LoginPage/>} />
@@ -11,3 +12,5 @@ export default () => {
         </Routes>
     );
 }
+
+export default AuthNavigator;

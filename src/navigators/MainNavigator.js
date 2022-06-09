@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { FbAiFormPage } from "../pages";
 
-export default () => {
+const MainNavigator = () => {
     return (
         <Routes>
             <Route path="/" element={<FbAiFormPage />} />
@@ -10,3 +10,5 @@ export default () => {
         </Routes>
     );
 }
+
+export default MainNavigator;

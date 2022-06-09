@@ -1,0 +1,42 @@
+.Wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    .rdrDay {
+        height: 46px;
+        width: 46px;
+        border-radius: 46px;
+    }
+
+    .rdrStartEdge{
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+    }
+
+    .rdrEndEdge {
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    .rdrDateInput {
+        border-radius: 7px;
+    }
+
+    .rdrNextPrevButton, .rdrNextButton, .rdrDateDisplayWrapper{
+        background-color: white;
+    }
+}
+
+.DateRange-container{
+    padding: 20px 30px 20px 30px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .Buttons-wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

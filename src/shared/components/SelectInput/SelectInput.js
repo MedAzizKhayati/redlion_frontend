@@ -1,13 +1,13 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { useId, useState, useEffect } from "react";
+import { useId, useState } from "react";
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
     "&[aria-selected]": {
         color: 'black',
     },
     "&:hover": {
-        backgroundColor: theme.palette.secondary.main + '!important',
+        backgroundColor: '#f00!important',
         color: 'white',
     },
 }));
@@ -19,7 +19,7 @@ const StyleFormControl = styled(FormControl)(({ theme }) => ({
 
 
 
-export default (props) => {
+const SelectInput = (props) => {
     const {
         label,
         value,
@@ -32,7 +32,7 @@ export default (props) => {
     const [open, setOpen] = useState(false);
 
     return (
-        <StyleFormControl fullWidth {...otherProps}>
+        <StyleFormControl color="secondary" fullWidth {...otherProps}>
             <InputLabel color="secondary" id={id}>{label}</InputLabel>
             <Select
                 value={value}
@@ -43,12 +43,10 @@ export default (props) => {
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 color="secondary"
-                sx={{
-                    borderColor: 'red',
-                }}
             >
                 {options.map(option => (
                     <StyledMenuItem
+                        color="secondary"
                         key={option.value}
                         value={option.value}
                     >
@@ -59,3 +57,6 @@ export default (props) => {
         </StyleFormControl>
     );
 }
+
+
+export default SelectInput;

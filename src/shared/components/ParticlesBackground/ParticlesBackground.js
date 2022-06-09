@@ -1,7 +1,7 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-export default () => {
+const ParticlesBackground = () => {
     return (
         <Particles
             id="tsparticles"
@@ -77,3 +77,6 @@ export default () => {
         />
     );
 }
+
+
+export default ParticlesBackground;

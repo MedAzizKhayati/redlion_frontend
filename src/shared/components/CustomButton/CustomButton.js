@@ -1,5 +1,5 @@
 import './styles.scss';
-export default (props) => {
+const CustomButton = (props) => {
     const {
         title,
         ...otherProps
@@ -13,3 +13,6 @@ export default (props) => {
         </button>
     );
 }
+
+
+export default CustomButton;

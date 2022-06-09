@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './styles.scss';
 
-export default (props) => {
+const CustomInput = (props) => {
     const {
         title,
         error,
@@ -41,3 +41,6 @@ export default (props) => {
 
     )
 }
+
+
+export default CustomInput;

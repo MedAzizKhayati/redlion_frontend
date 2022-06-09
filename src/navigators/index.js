@@ -6,17 +6,18 @@ import MainNavigator from './MainNavigator';
 import DefaultTheme from '../shared/themes/DefaultTheme';
 import { ParticlesBackground } from '../shared/components';
 
-export default () => {
+const GlobalNavigator = () => {
     // Add Global Context for Auth State.
     const [authState, setAuthState] = useState({});
 
     useEffect(() => {
-
+        setAuthState({});
+        console.log(process.env.PUBLIC_URL);
     }, []);
 
     return (
         <ThemeProvider theme={DefaultTheme}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <ParticlesBackground />
                 {
                     authState.isAuthenticated ?
@@ -27,3 +28,5 @@ export default () => {
         </ThemeProvider>
     );
 }   
+
+export default GlobalNavigator;
