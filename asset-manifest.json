@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/redlion_frontend/static/css/main.aec13b80.css",
-    "main.js": "/redlion_frontend/static/js/main.2f40787b.js",
+    "main.css": "/redlion_frontend/static/css/main.d5a0be78.css",
+    "main.js": "/redlion_frontend/static/js/main.6aac11e9.js",
     "static/js/937.eeb4fc90.chunk.js": "/redlion_frontend/static/js/937.eeb4fc90.chunk.js",
+    "static/media/logo.png": "/redlion_frontend/static/media/logo.8093b37e1ba6214fd85f.png",
     "index.html": "/redlion_frontend/index.html",
-    "main.aec13b80.css.map": "/redlion_frontend/static/css/main.aec13b80.css.map",
-    "main.2f40787b.js.map": "/redlion_frontend/static/js/main.2f40787b.js.map",
+    "main.d5a0be78.css.map": "/redlion_frontend/static/css/main.d5a0be78.css.map",
+    "main.6aac11e9.js.map": "/redlion_frontend/static/js/main.6aac11e9.js.map",
     "937.eeb4fc90.chunk.js.map": "/redlion_frontend/static/js/937.eeb4fc90.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aec13b80.css",
-    "static/js/main.2f40787b.js"
+    "static/css/main.d5a0be78.css",
+    "static/js/main.6aac11e9.js"
   ]
 }
