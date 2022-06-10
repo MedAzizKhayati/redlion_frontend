@@ -1,4 +1,4 @@
-import { Button } from "@mui/material"
+import { Button, FormControl, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
 import { useEffect, useState } from "react";
 import { CustomDatePicker, SelectInput } from "../../shared/components";
 import { addDays } from 'date-fns';
@@ -29,20 +29,21 @@ const FbAiFormPage = () => {
             setFormIndex(formIndex - 1);
     }
 
+
+    const handleSubmit = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }
+
     return (
         <div style={{ minWidth: 400, height: '100%', display: "flex", flexDirection: "column", alignItems: 'center' }}>
             <h1 style={{ textAlign: 'center' }}>{form.title}</h1>
             <div style={{ height: '100px' }}></div>
             <h1 style={{ textAlign: 'center', width: "100%" }}>{form.subTitle}</h1>
             {
-                !form.dateRange ?
-                    <SelectInput
-                        value={formData[form.key] || ''}
-                        onChange={handleChange}
-                        options={form.options}
-                        label={form.label}
-                    />
-                    :
+                form.dateRange ?
                     <CustomDatePicker
                         ranges={formData[form.key] || [{
                             startDate: new Date(),
@@ -55,8 +56,28 @@ const FbAiFormPage = () => {
                         color="secondary"
                         handleBack={handleBack}
                         loading={loading}
-                        handleSubmit={() => setLoading(true)}
+                        handleSubmit={handleSubmit}
                     />
+
+                    : form.type === 'number' ?
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="outlined-adornment-amount">{form.label}</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-amount"
+                                type="number"
+                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                label={form.label}
+                                onChange={ev => setFormData({ ...formData, [form.key]: Math.max(ev.target.value, 10) })}
+                                value={formData[form.key] || 10}
+                            />
+                        </FormControl>
+                        :
+                        <SelectInput
+                            value={formData[form.key] || ''}
+                            onChange={handleChange}
+                            options={form.options}
+                            label={form.label}
+                        />
             }
 
             <div style={{ height: 150 }}></div>
