@@ -1,8 +1,9 @@
-import { Button, FormControl, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
+import { Button, FormControl, FormHelperText, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
 import { useEffect, useState } from "react";
 import { CustomDatePicker, SelectInput } from "../../shared/components";
 import { addDays } from 'date-fns';
 import data from "./Data";
+import './styles.scss';
 
 const FbAiFormPage = () => {
     const [form, setForm] = useState(data[0]);
@@ -34,11 +35,11 @@ const FbAiFormPage = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 3500);
     }
 
     return (
-        <div style={{ minWidth: 400, height: '100%', display: "flex", flexDirection: "column", alignItems: 'center' }}>
+        <div className="Form-container" style={{ minWidth: 400, display: "flex", flexDirection: "column", alignItems: 'center' }}>
             <h1 style={{ textAlign: 'center' }}>{form.title}</h1>
             <div style={{ height: '100px' }}></div>
             <h1 style={{ textAlign: 'center', width: "100%" }}>{form.subTitle}</h1>
@@ -57,6 +58,7 @@ const FbAiFormPage = () => {
                         handleBack={handleBack}
                         loading={loading}
                         handleSubmit={handleSubmit}
+                        disabled={!formData[form.key]}
                     />
 
                     : form.type === 'number' ?
@@ -67,9 +69,14 @@ const FbAiFormPage = () => {
                                 type="number"
                                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
                                 label={form.label}
-                                onChange={ev => setFormData({ ...formData, [form.key]: Math.max(ev.target.value, 10) })}
-                                value={formData[form.key] || 10}
+                                onChange={handleChange}
+                                value={formData[form.key] || form.min}
                             />
+                            {
+                                formData[form.key] < form.min &&
+                                <FormHelperText error id="component-error-text">The minimum budget is ${form.min}.</FormHelperText>
+                            }
+
                         </FormControl>
                         :
                         <SelectInput
@@ -102,7 +109,11 @@ const FbAiFormPage = () => {
                             variant="contained"
                             color="secondary"
                             onClick={handleNext}
-                            disabled={formIndex === data.length - 1 || !formData[form.key]}
+                            disabled={
+                                formIndex === data.length - 1 ||
+                                !formData[form.key] ||
+                                (form.type === 'number' && formData[form.key] < form.min)
+                            }
                         >
                             Next
                         </Button>

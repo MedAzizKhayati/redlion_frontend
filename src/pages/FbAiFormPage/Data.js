@@ -1,4 +1,4 @@
-export default [
+const DATA = [
     {
         title: "Choose your sector",
         label: "Sector",
@@ -25,6 +25,7 @@ export default [
         label: "Budget",
         key: 'budget',
         type: 'number',
+        min: 10,
     },
     {
         subTitle: "Specify the period of your compaign",
@@ -32,3 +33,6 @@ export default [
         key: 'dateRange',
     }
 ]
+
+
+export default DATA;

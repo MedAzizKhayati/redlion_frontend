@@ -16,6 +16,7 @@ const CustomDatePicker = (props) => {
         handleBack,
         handleSubmit,
         loading,
+        disabled,
         ...otherProps
     } = props;
 
@@ -59,9 +60,9 @@ const CustomDatePicker = (props) => {
                         borderRadius: 6,
                         backgroundColor:"red!important",
                         color:"white!important",
-                        opacity: loading ? 0.5 : 1,
+                        opacity: loading || disabled ? 0.5 : 1,
                     }}
-                    disabled={loading}
+                    disabled={loading || disabled}
                     loading={loading}
                     onClick={handleSubmit}
                 >

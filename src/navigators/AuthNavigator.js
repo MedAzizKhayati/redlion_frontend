@@ -8,7 +8,6 @@ const AuthNavigator = () => {
             <Route path='/' element={<LoginPage/>} />
             <Route path='/login' element={<LoginPage/>} />
             <Route path="/register" element={<SignUpPage/>} />
-            <Route path="/form" element={<FbAiFormPage/>} />
         </Routes>
     );
 }

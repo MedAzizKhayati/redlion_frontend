@@ -1,22 +1,35 @@
 import { Formik } from 'formik';
 import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
-import './styles.scss';
+
 import { AiOutlineMail, AiFillUnlock } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { Checkbox } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { login } from '../../services/user.service';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalProvider';
+import './styles.scss';
+
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    const { authDispatch } = useContext(GlobalContext);
+
+    const handleSubmit = async (values) => {
+        const user = await login(values);
+        console.log(user);
+        authDispatch({ type: 'LOGIN', payload: user });
+        navigate('/form');
+    }
 
     return (
-        <div className='auth-form'>
+        <div className='login-form'>
             <h1>Log In</h1>
             <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{ email: '', password: '' }}
-                onSubmit={() => navigate('/form')}
+                onSubmit={handleSubmit}
             >
                 {({
                     handleChange,

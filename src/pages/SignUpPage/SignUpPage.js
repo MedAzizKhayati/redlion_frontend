@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const SingUpPage = () => {
     return (
-        <div className='auth-form'>
+        <div className='signup-form'>
             <h1>Sign Up</h1>
             <Formik
                 validationSchema={loginValidationSchema}
@@ -91,7 +91,7 @@ const SingUpPage = () => {
                         />
                         <div className='link'>
                             <Link to='/'>
-                                <p className='forgot-password'>
+                                <p>
                                     Log In
                                 </p>
                             </Link>

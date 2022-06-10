@@ -1,32 +1,38 @@
 import { ThemeProvider } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
-import { BrowserRouter} from 'react-router-dom';
+import { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import DefaultTheme from '../shared/themes/DefaultTheme';
-import { ParticlesBackground } from '../shared/components';
+import { Navbar, ParticlesBackground } from '../shared/components';
+import { GlobalContext } from '../context/GlobalProvider';
 
 const GlobalNavigator = () => {
-    // Add Global Context for Auth State.
-    const [authState, setAuthState] = useState({});
+    const {
+        authState: {
+            isAuthenticated
+        }
+    } = useContext(GlobalContext);
 
-    useEffect(() => {
-        setAuthState({});
-        console.log(process.env.PUBLIC_URL);
-    }, []);
 
     return (
         <ThemeProvider theme={DefaultTheme}>
+            <ParticlesBackground />
             <BrowserRouter basename={process.env.PUBLIC_URL}>
-                <ParticlesBackground />
                 {
-                    authState.isAuthenticated ?
-                        <MainNavigator /> :
-                        <AuthNavigator />
+                    isAuthenticated &&
+                    <Navbar />
                 }
+                <div id="main">
+                    {
+                        isAuthenticated ?
+                            <MainNavigator /> :
+                            <AuthNavigator />
+                    }
+                </div>
             </BrowserRouter>
         </ThemeProvider>
     );
-}   
+}
 
 export default GlobalNavigator;

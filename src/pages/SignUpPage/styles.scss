@@ -1,14 +1,18 @@
-.auth-form {
+.signup-form {
     min-width: 400px;
     max-width: 600px;
-    width: 28vw;
-    background-color: #14141b;
+    width: 25vw;
+    // background-color: #14141b;
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
-    opacity: 0.85;
+
+    box-shadow: 0px 5px 10px 0px rgba(5, 5, 5, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 
     h1 {
         font-size: 2.5rem;
@@ -26,15 +30,6 @@
         width: 80%;
         font-size: small;
 
-        .forgot-password {
-            color: #f00;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-                cursor: pointer;
-            }
-        }
 
         .remember-me {
             flex-direction: row;
@@ -56,11 +51,13 @@
             font-size: small;
             color: #eee;
             transition: all 0.3s ease;
+            text-decoration: underline;
+            text-decoration-color: red;
         }
 
         p:hover {
             cursor: pointer;
-            transform: scale(1.02);
+            transform: scale(1.05);
             color: #f00;
         }
     }
