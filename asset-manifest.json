@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/redlion_frontend/static/css/main.58ce698a.css",
-    "main.js": "/redlion_frontend/static/js/main.b68ad6c9.js",
+    "main.js": "/redlion_frontend/static/js/main.d48e7dfc.js",
     "static/js/937.eeb4fc90.chunk.js": "/redlion_frontend/static/js/937.eeb4fc90.chunk.js",
     "index.html": "/redlion_frontend/index.html",
     "main.58ce698a.css.map": "/redlion_frontend/static/css/main.58ce698a.css.map",
-    "main.b68ad6c9.js.map": "/redlion_frontend/static/js/main.b68ad6c9.js.map",
+    "main.d48e7dfc.js.map": "/redlion_frontend/static/js/main.d48e7dfc.js.map",
     "937.eeb4fc90.chunk.js.map": "/redlion_frontend/static/js/937.eeb4fc90.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.58ce698a.css",
-    "static/js/main.b68ad6c9.js"
+    "static/js/main.d48e7dfc.js"
   ]
 }
