@@ -1,4 +1,4 @@
-import { logout } from "../../services/user.service";
+import { logout } from "../../services/auth.service";
 
 const AuthReducer = (state, { type, payload }) => {
     switch (type) {
@@ -7,6 +7,7 @@ const AuthReducer = (state, { type, payload }) => {
             return {
                 ...state,
                 isAuthenticated: true,
+                loading: false,
                 user: payload,
             };
         case 'LOADING':

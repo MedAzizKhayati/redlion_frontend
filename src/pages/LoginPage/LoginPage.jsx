@@ -1,30 +1,56 @@
 import { Formik } from 'formik';
 import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
-
+import image from '../../shared/assets/images/logo.png';
 import { AiOutlineMail, AiFillUnlock } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Checkbox } from '@mui/material';
 import { useNavigate } from "react-router-dom";
-import { login } from '../../services/user.service';
-import { useContext } from 'react';
+import { login } from '../../services/auth.service';
+import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalProvider';
 import './styles.scss';
+import { toast } from 'react-toastify';
+
 
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const { authDispatch } = useContext(GlobalContext);
+    const location = useLocation();
+    const { authState, authDispatch } = useContext(GlobalContext);
+    const [ disabled, setDisabled ] = useState(false);
 
-    const handleSubmit = async (values) => {
-        const user = await login(values);
-        console.log(user);
-        authDispatch({ type: 'LOGIN', payload: user });
-        navigate('/form');
+    const handleSubmit = async (values, toastify = true) => {
+        const id = toast.loading('Logging in...');
+        try {
+            setDisabled(true);
+            const user = await login(values);
+
+            toast.success('You have successfully logged in!');
+
+            authDispatch({ type: 'LOGIN', payload: user });
+
+            if (location.state?.from)
+                return navigate(location.state.from);
+
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+            const message = error.response?.data?.message || 'Something went wrong!';
+            toast.error(message);
+        }
+        toast.dismiss(id);
+        setDisabled(false);
     }
+
+    useEffect(() => {
+        if (authState.isAuthenticated)
+            navigate('/');
+    }, [authState]);
 
     return (
         <div className='login-form'>
+            {/* <img width="150px" height="150px" style={{ borderRadius: '50%' }} src={image} id="Avatar" /> */}
             <h1>Log In</h1>
             <Formik
                 validationSchema={loginValidationSchema}
@@ -74,8 +100,12 @@ const LoginPage = () => {
                         <CustomButton
                             onClick={handleSubmit}
                             title="Log In"
-                            style={{ opacity: isValid ? 1 : 0.5 }}
-                            disabled={!isValid}
+                            style={{ 
+                                opacity: isValid && !disabled ? 1 : 0.5,
+                                cursor: isValid && !disabled ? 'pointer' : 'default'
+                            }}
+                            disabled={!isValid || disabled}
+                            type='submit'
                         />
                         <div className='link'>
                             <Link to='/register'>
@@ -100,7 +130,7 @@ const loginValidationSchema = yup.object().shape({
         .required('Email Address is Required'),
     password: yup
         .string()
-        .min(8, ({ min }) => `Password must be at least ${min} characters`)
+        .min(4, ({ min }) => `Password must be at least ${min} characters`)
         .required('Password is required'),
 });
 

@@ -1,13 +1,35 @@
 import { Formik } from 'formik';
 import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
+import image from '../../shared/assets/images/logo.png';
 import './styles.scss';
 import { AiOutlineUser, AiOutlineMail, AiFillUnlock } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { register } from '../../services/auth.service';
+import { useNavigate } from "react-router-dom";
+
 
 const SingUpPage = () => {
+    const navigate = useNavigate();
+
+    const onSubmit = async (values) => {
+        console.log("Submitted");
+        try {
+            const user = await register({
+                email: values.email,
+                password: values.password,
+                name: values.firstName + ' ' + values.lastName
+            });
+            navigate('/login', { success: 'You have successfully registered!' });
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className='signup-form'>
+            {/* <img width="150px" height="k150px" style={{ borderRadius: '50%' }} src={image} id="Avatar" /> */}
             <h1>Sign Up</h1>
             <Formik
                 validationSchema={loginValidationSchema}
@@ -18,7 +40,7 @@ const SingUpPage = () => {
                     firstName: '',
                     lastName: ''
                 }}
-                onSubmit={values => console.log(values)}
+                onSubmit={onSubmit}
             >
                 {({
                     handleChange,
@@ -84,10 +106,11 @@ const SingUpPage = () => {
 
                         <div style={{ height: '20px' }} />
                         <CustomButton
-                            onPress={handleSubmit}
+                            onClick={handleSubmit}
                             title="Sign Up"
                             style={{ opacity: isValid ? 1 : 0.5 }}
                             disabled={!isValid}
+                            type="Submit"
                         />
                         <div className='link'>
                             <Link to='/'>

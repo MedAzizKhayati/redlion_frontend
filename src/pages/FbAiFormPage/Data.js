@@ -4,10 +4,10 @@ const DATA = [
         label: "Sector",
         key: 'sector',
         options: [
-            { value: '10', label: 'E-commerce & Retail' },
-            { value: '20', label: 'B2B' },
-            { value: '30', label: 'Travel' },
-            { value: '40', label: 'Automotive' },
+            { value: 'Ecommerce & Retail', label: 'Ecommerce & Retail' },
+            { value: 'B2B', label: 'B2B' },
+            { value: 'Travel', label: 'Travel' },
+            { value: 'Automotive', label: 'Automotive' },
         ]
     },
     {
@@ -15,9 +15,12 @@ const DATA = [
         label: "Goal",
         key: 'goal',
         options: [
-            { value: '10', label: 'Interaction' },
-            { value: '20', label: 'Traffic' },
-            { value: '30', label: 'Lead Generation' },
+            { value: 'Interaction', label: 'Interaction' },
+            { value: 'Trafic', label: 'Traffic' },
+            { value: 'Génération de prospects', label: 'Lead Generation' },
+            { value: 'CONVERSIONS', label: 'Conversions' },
+            { value: "Mentions J'aime une Page", label: 'Likes' },
+            { value: 'Messages', label: 'Messages' },
         ]
     },
     {
@@ -28,7 +31,7 @@ const DATA = [
         min: 10,
     },
     {
-        subTitle: "Specify the period of your compaign",
+        title: "Specify the period of your compaign",
         dateRange: true,
         key: 'dateRange',
     }

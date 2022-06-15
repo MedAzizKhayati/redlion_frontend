@@ -1,23 +1,30 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { useContext } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import AuthNavigator from './AuthNavigator';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainNavigator from './MainNavigator';
 import DefaultTheme from '../shared/themes/DefaultTheme';
-import { Navbar, ParticlesBackground } from '../shared/components';
+import { Navbar, ParticlesBackground, Matrix } from '../shared/components';
 import { GlobalContext } from '../context/GlobalProvider';
+import { LoadingPage } from '../pages';
+
 
 const GlobalNavigator = () => {
     const {
         authState: {
-            isAuthenticated
+            isAuthenticated,
+            loading
         }
     } = useContext(GlobalContext);
 
-
     return (
         <ThemeProvider theme={DefaultTheme}>
-            <ParticlesBackground />
+
+            {/* <ParticlesBackground /> */}
+            {
+                isAuthenticated ?
+                    <ParticlesBackground /> :
+                    !loading && <Matrix color="red" background="#04040D" />
+            }
             <BrowserRouter basename={process.env.PUBLIC_URL}>
                 {
                     isAuthenticated &&
@@ -25,13 +32,15 @@ const GlobalNavigator = () => {
                 }
                 <div id="main">
                     {
-                        isAuthenticated ?
-                            <MainNavigator /> :
-                            <AuthNavigator />
+                        loading ?
+                            <LoadingPage/>
+                            :
+                            < MainNavigator />
                     }
                 </div>
+
             </BrowserRouter>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 }
 

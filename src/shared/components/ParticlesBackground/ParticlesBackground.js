@@ -8,7 +8,7 @@ const ParticlesBackground = () => {
             init={(main) => loadFull(main)}
             options={{
                 fullScreen: {
-                    "enable": true,
+                    // "enable": true,
                     "zIndex": -5
                 },
                 background: {
@@ -63,7 +63,7 @@ const ParticlesBackground = () => {
                         value: 80,
                     },
                     opacity: {
-                        value: 0.9,
+                        value: 0.5,
                     },
                     shape: {
                         type: "circle",

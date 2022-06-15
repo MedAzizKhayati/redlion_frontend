@@ -1,27 +1,34 @@
 import { createContext, useEffect, useReducer } from "react";
 import DEFAULT_AUTH_STATE from "./initial-states/AuthState";
 import AuthReducer from "./reducers/AuthReducer";
-
+import { getAuthUser, logout } from "../services/auth.service";
 
 export const GlobalContext = createContext({});
 
-const GlobalProvider = ({children}) => {
+const GlobalProvider = ({ children }) => {
     const [authState, authDispatch] = useReducer(AuthReducer, DEFAULT_AUTH_STATE);
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user")); 
-        if(user){
+    const init = async () => {
+        try {
+            const user = await getAuthUser();
             authDispatch({
                 type: "LOGIN",
                 payload: user
             });
-            console.log("Logged in");
+        } catch (error) {
+            console.log(error?.response?.data);
+            authDispatch({
+                type: "LOADED"
+            });
+            logout();
         }
-        
-            
+    }
+
+    useEffect(() => {
+        init();
     }, []);
 
-    return(
+    return (
         <GlobalContext.Provider value={{
             authState,
             authDispatch
