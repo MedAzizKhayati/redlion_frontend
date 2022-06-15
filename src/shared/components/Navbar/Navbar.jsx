@@ -45,8 +45,6 @@ const Navbar = () => {
             </div>
             <div className="navbar-links">
                 <ul className="nav-area">
-                    <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/')}>Home</a></li>
-                    <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/form')}>Earnings</a></li>
                     <div className="dropdown ">
                         <li className="navbar-list">
                             {/* <img width="55px" height="55px" style={{ borderRadius: '50%' }} src='https://picsum.photos/200/200' id="Avatar" /> */}
@@ -61,37 +59,18 @@ const Navbar = () => {
                                 <MenuIcon sx={{ fontSize: "35px" }} />
                             </IconButton>
                         </li>
-                        {/* <Drawer
-                            anchor={anchor}
-                            open={state[anchor]}
-                            onClose={toggleDrawer(anchor, false)}
-                            sx={{
-                                borderTopLeftRadius: "10px",
-                                borderBottomLeftRadius: "10px",
-                                overflow: "hidden",
-                            }}
-                        >
-                            {list(anchor)}
-
-                        </Drawer> */}
-                        {/*  */}
-
                         <Drawer
                             open={isOpen}
                             onClose={toggleDrawer}
                             direction='right'
                             className='drawer'
-
                         >
-                            {/* <div style={{ color: "black" }}>Hello World</div> */}
-                            {/* <div className="dropdown-content">
-                                <li className="navbar-list"><a className="cool-link">Profile</a></li>
-                                <li className="navbar-list"><a className="cool-link">Settings</a></li>
-                                <li className="navbar-list"><a className="cool-link" onClick={handleLogout}>Logout</a></li>
-                            </div> */}
                             <div className='drawer-content'>
                                 <h1 className="drawer-header">Welcome {user.name.split(' ')[0]}</h1>
                                 <div className="seperator"/>
+                                <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/')}>Home</a></li>
+                                <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/form')}>Earnings</a></li>
+                                <div className="seperator" style={{opacity: 0.5}} />
                                 <li className="navbar-list"><a className="cool-link">Profile</a></li>
                                 <li className="navbar-list"><a className="cool-link">Settings</a></li>
                                 <li className="navbar-list"><a className="cool-link" onClick={handleLogout}>Logout</a></li>

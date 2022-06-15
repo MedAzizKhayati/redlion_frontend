@@ -17,3 +17,7 @@ export { default as SkeletonCard } from './SkeletonCard/SkeletonCard';
 export { default as ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
 
 export { default as Matrix } from './Matrix/Matrix';
+
+export { default as CustomCircularProgressbar } from './CustomCircularProgressbar/CustomCircularProgressbar';
+
+export { default as Card } from './Card/Card';

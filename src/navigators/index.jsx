@@ -21,9 +21,7 @@ const GlobalNavigator = () => {
 
             {/* <ParticlesBackground /> */}
             {
-                isAuthenticated ?
-                    <ParticlesBackground /> :
-                    !loading && <Matrix color="red" background="#04040D" />
+                !loading && <Matrix color="red" background="#04040D" />
             }
             <BrowserRouter basename={process.env.PUBLIC_URL}>
                 {
@@ -33,7 +31,7 @@ const GlobalNavigator = () => {
                 <div id="main">
                     {
                         loading ?
-                            <LoadingPage/>
+                            <LoadingPage />
                             :
                             < MainNavigator />
                     }

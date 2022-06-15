@@ -3,5 +3,5 @@ export const formatDateToApi = (date) => {
     const day = dateFormatted.getDate();
     const month = dateFormatted.getMonth() + 1;
     const year = dateFormatted.getFullYear();
-    return `${year}-${month}-${day}`;
+    return `${month}-${day}-${year}`;
 }

@@ -22,7 +22,6 @@ const FbAiFormPage = () => {
 
     const handleChange = (event) => {
         setFormData({ ...formData, [form.key]: event.target.value });
-        console.log(formData);
     };
 
     const handleNext = () => {
@@ -38,6 +37,14 @@ const FbAiFormPage = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+
+        const requestBody = {
+            "sector": formData.sector,
+            "goal": formData.goal,
+            "budget": formData.budget,
+            "startDate": formatDateToApi(formData.dateRange[0].startDate),
+            "endDate": formatDateToApi(formData.dateRange[0].endDate),
+        }
 
         // const res = await axios.post("http://192.168.100.200:5000/predict_fb_api", {
         //     "secteur": formData.sector,
@@ -55,7 +62,7 @@ const FbAiFormPage = () => {
 
         // navigate('/statistics', { state: res.data });
 
-        navigate('/statistics');
+        navigate('/statistics', { state: {...requestBody} });
 
     }
 

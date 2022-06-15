@@ -39,14 +39,21 @@ code {
   flex: 1 1 auto;
 }
 
-.Toastify{
+.Toastify {
   position: absolute;
 }
 
 .Toastify__toast {
   box-shadow: 0px 5px 10px 0px rgba(5, 5, 5, 0.2);
-  background-color: rgba(0, 0, 0, 0.2)!important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 
+}
+
+.blurry-bg {
+  box-shadow: 0px 5px 10px 0px rgba(5, 5, 5, 0.2);
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }

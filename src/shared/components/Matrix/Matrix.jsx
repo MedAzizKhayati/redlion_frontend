@@ -59,7 +59,7 @@ export default class Matrix extends React.Component {
             this.setState({ canvas, columns, context, size, source, numberOfColumns }, () => {
 
                 for (let i = 0; i < numberOfColumns; i++) {
-                    columns.push(Math.floor(Math.random() * 10))
+                    columns.push(Math.floor(Math.random() * 10));
                 }
 
                 this.draw();
@@ -77,7 +77,7 @@ export default class Matrix extends React.Component {
         let columns = this.state.columns;
         let numberOfColumns = this.state.numberOfColumns;
 
-        context.fillStyle = 'rgba(4,4,13,0.1)';
+        context.fillStyle = 'rgba(10,10,15,0.1)';
         context.fillRect(0, 0, this.state.canvas.width, this.state.canvas.width);
         context.fillStyle = this.props.color;
         context.font = '700 ' + this.props.fontSize + 'px Consolas,monaco,monospace';

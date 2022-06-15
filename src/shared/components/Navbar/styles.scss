@@ -150,7 +150,6 @@
     backdrop-filter: blur(15px) !important;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-
 }
 
 .drawer-content {
@@ -179,4 +178,8 @@
             text-shadow: 0 0 40px #fff;
         }
     }
+}
+
+.EZDrawer__overlay{
+    height: 100vh!important;
 }
