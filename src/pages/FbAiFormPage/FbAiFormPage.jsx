@@ -38,8 +38,8 @@ const FbAiFormPage = () => {
         const label = [
             ...data[0].options,
             ...data[1].options,
-        ].find(option => option.value === value);
-        return label?.label;
+        ].find(option => option.value === value)?.label;
+        return label;
     }
 
     const handleSubmit = async () => {
