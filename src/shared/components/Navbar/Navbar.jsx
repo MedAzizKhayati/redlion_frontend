@@ -18,7 +18,6 @@ const Navbar = () => {
 
     const {
         authState: {
-            isAuthenticated,
             user
         },
         authDispatch
@@ -38,7 +37,7 @@ const Navbar = () => {
     return (
         <nav className="navbar" style={{ position: 'sticky', width: "100%" }}>
             <div className="brand-title">
-                <img width="55px" height="55px" style={{ borderRadius: '50%' }} src={image} id="Avatar" />
+                <img width="55px" height="55px" style={{ borderRadius: '50%' }} src={image} alt='icon' />
                 <h1 className="title">
                     RED LION
                 </h1>
@@ -67,10 +66,10 @@ const Navbar = () => {
                         >
                             <div className='drawer-content'>
                                 <h1 className="drawer-header">Welcome {user.name.split(' ')[0]}</h1>
-                                <div className="seperator"/>
+                                <div className="seperator" />
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/')}>Home</a></li>
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/form')}>Earnings</a></li>
-                                <div className="seperator" style={{opacity: 0.5}} />
+                                <div className="seperator" style={{ opacity: 0.5 }} />
                                 <li className="navbar-list"><a className="cool-link">Profile</a></li>
                                 <li className="navbar-list"><a className="cool-link">Settings</a></li>
                                 <li className="navbar-list"><a className="cool-link" onClick={handleLogout}>Logout</a></li>

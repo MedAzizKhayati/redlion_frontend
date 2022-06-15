@@ -18,7 +18,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { authState, authDispatch } = useContext(GlobalContext);
-    const [ disabled, setDisabled ] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
     const handleSubmit = async (values, toastify = true) => {
         const id = toast.loading('Logging in...');
@@ -26,6 +26,7 @@ const LoginPage = () => {
             setDisabled(true);
             const user = await login(values);
 
+            toast.dismiss(id);
             toast.success('You have successfully logged in!');
 
             authDispatch({ type: 'LOGIN', payload: user });
@@ -37,9 +38,10 @@ const LoginPage = () => {
         } catch (error) {
             console.log(error);
             const message = error.response?.data?.message || 'Something went wrong!';
+            toast.dismiss(id);
             toast.error(message);
         }
-        toast.dismiss(id);
+
         setDisabled(false);
     }
 
@@ -100,7 +102,7 @@ const LoginPage = () => {
                         <CustomButton
                             onClick={handleSubmit}
                             title="Log In"
-                            style={{ 
+                            style={{
                                 opacity: isValid && !disabled ? 1 : 0.5,
                                 cursor: isValid && !disabled ? 'pointer' : 'default'
                             }}

@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { useContext } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import MainNavigator from './MainNavigator';
 import DefaultTheme from '../shared/themes/DefaultTheme';
 import { Navbar, ParticlesBackground, Matrix } from '../shared/components';

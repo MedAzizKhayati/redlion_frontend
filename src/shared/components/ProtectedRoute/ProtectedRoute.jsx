@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, useLocation, Navigate, Outlet } from "react-router-dom";
+import {  useLocation, Navigate, Outlet } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalProvider";
 
 const ProtectedRoute = () => {

@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
-import image from '../../shared/assets/images/logo.png';
 import './styles.scss';
 import { AiOutlineUser, AiOutlineMail, AiFillUnlock } from "react-icons/ai";
 import { Link } from 'react-router-dom';
@@ -13,9 +12,8 @@ const SingUpPage = () => {
     const navigate = useNavigate();
 
     const onSubmit = async (values) => {
-        console.log("Submitted");
         try {
-            const user = await register({
+            await register({
                 email: values.email,
                 password: values.password,
                 name: values.firstName + ' ' + values.lastName
