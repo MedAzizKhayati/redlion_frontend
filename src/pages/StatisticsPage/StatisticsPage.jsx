@@ -35,14 +35,14 @@ const StatisticsPage = () => {
                     </p>
                 </Card>
                 <Card className="blurry-bg" title="Strategy Summary" style={{ maxWidth: '90%' }}>
-                    <p>Your Sector is: <strong>{data.sector}</strong></p>
-                    <p>Your Goal is: <strong>{data.goal}</strong></p>
-                    <p>Your Budget is: <strong>${data.budget}</strong></p>
+                    <p>Your Sector is: <strong>{data?.sector}</strong></p>
+                    <p>Your Goal is: <strong>{data?.goal}</strong></p>
+                    <p>Your Budget is: <strong>${data?.budget}</strong></p>
                     <p>
                         Your Compaign will be from	&nbsp;
-                        <strong>{formatDateToApi(data.startDate)}</strong> 	&nbsp;
+                        <strong>{formatDateToApi(data?.startDate)}</strong> 	&nbsp;
                         to 	&nbsp;
-                        <strong>{formatDateToApi(data.endDate)}</strong>.
+                        <strong>{formatDateToApi(data?.endDate)}</strong>.
                     </p>
                 </Card>
             </div>
