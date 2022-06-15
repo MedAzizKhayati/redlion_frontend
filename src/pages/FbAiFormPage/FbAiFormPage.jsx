@@ -34,13 +34,20 @@ const FbAiFormPage = () => {
             setFormIndex(formIndex - 1);
     }
 
+    const findLabelByValue = (value) => {
+        const label = [
+            ...data[0].options,
+            ...data[1].options,
+        ].find(option => option.value === value);
+        return label?.label;
+    }
 
     const handleSubmit = async () => {
         setLoading(true);
 
         const requestBody = {
-            "sector": formData.sector,
-            "goal": formData.goal,
+            "sector": findLabelByValue(formData.sector),
+            "goal": findLabelByValue(formData.goal),
             "budget": formData.budget,
             "startDate": formatDateToApi(formData.dateRange[0].startDate),
             "endDate": formatDateToApi(formData.dateRange[0].endDate),
