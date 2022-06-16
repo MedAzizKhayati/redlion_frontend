@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { set } from 'lodash';
 
-export default class Matrix extends React.Component {
-    static propTypes = {
+export default (props) => {
+    const propTypes = {
         width: PropTypes.number,
         height: PropTypes.number,
         fullscreen: PropTypes.bool,
@@ -17,13 +18,12 @@ export default class Matrix extends React.Component {
         zIndex: PropTypes.number
     };
 
-    static defaultProps = {
+    const defaultProps = {
         width: 640,
         height: 480,
-        fullscreen: true,
+        fullscreen: false,
         colSize: 15,
         fontSize: 15.5,
-        interval: 30,
         color: '#00cc33',
         frequency: 0.005,
         speed: 1.1,
@@ -31,93 +31,103 @@ export default class Matrix extends React.Component {
         background: "#000000"
     };
 
-    constructor(props) {
-        super(props);
+    const [state, setState_] = useState({ ...defaultProps, ...props });
+    const canvas = useRef(null);
 
-        this.state = {
-            canvas: null
-        };
-
-        this.draw = this.draw.bind(this);
-        this.updateDimensions = this.updateDimensions.bind(this);
+    const setState = (newState) => {
+        setState_({ ...state, ...newState });
     }
 
-    componentDidMount() {
-        this.setState({ canvas: this.refs.canvas }, () => {
-            let columns = [];
-            let context = this.state.canvas.getContext('2d');
-            let size = this.props.colSize;
-            let source = '0 0 1 1';
-            let width = this.props.fullscreen ? window.innerWidth : this.props.width;
-            let height = this.props.fullscreen ? document.body.scrollHeight : this.props.height;
-            let canvas = this.state.canvas;
-            canvas.width = width;
-            canvas.height = height;
+    useEffect(() => {
+        if (!canvas || state.columns)
+            return;
 
-            let numberOfColumns = Math.floor(width / size * 3);
+        let columns = [];
+        let context = canvas.current.getContext('2d');
+        let size = state.colSize;
+        let source = '0 0 1 1';
+        let width = state.fullscreen ? window.innerWidth : state.width;
+        let height = state.fullscreen ? document.body.scrollHeight : state.height;
 
-            this.setState({ canvas, columns, context, size, source, numberOfColumns }, () => {
+        canvas.current.width = width;
+        canvas.current.height = height;
 
-                for (let i = 0; i < numberOfColumns; i++) {
-                    columns.push(Math.floor(Math.random() * 10));
-                }
+        let numberOfColumns = Math.floor(width / size * 3);
 
-                this.draw();
-                let interval = setInterval(this.draw, 50 / this.props.speed);
-                this.setState({ interval });
+        for (let i = 0; i < numberOfColumns; i++) {
+            columns.push(Math.floor(Math.random() * 10));
+        }
 
-                if (this.props.fullscreen)
-                    window.addEventListener('resize', this.updateDimensions);
-            });
-        });
-    }
+        setState({ canvas: canvas.current, columns, context, size, source, numberOfColumns });
+        
+        if (state.fullscreen)
+            window.addEventListener('resize', updateDimensions);
 
-    draw() {
-        let context = this.state.context;
-        let columns = this.state.columns;
-        let numberOfColumns = this.state.numberOfColumns;
+
+    }, [canvas]);
+
+    useEffect(() => {
+        if (state.interval === undefined && state.columns) {
+            let interval = setInterval(draw, 50 / state.speed);
+            setState({ interval });
+        }
+    }, [state.columns]);
+
+    const draw = () => {
+        if (!state.context)
+            return;
+
+        let context = state.context;
+        let columns = state.columns;
+        let numberOfColumns = state.numberOfColumns;
 
         context.fillStyle = 'rgba(6,6,19,0.1)';
-        context.fillRect(0, 0, this.state.canvas.width, this.state.canvas.height);
-        context.fillStyle = this.props.color;
-        context.font = '700 ' + this.props.fontSize + 'px Consolas,monaco,monospace';
+        context.fillRect(0, 0, state.canvas.width, state.canvas.height);
+        context.fillStyle = state.color;
+        context.font = '700 ' + state.fontSize + 'px Consolas,monaco,monospace';
 
         for (let columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
-            let index = Math.floor(Math.random() * this.state.source.length);
-            let character = this.state.source[index];
-            let positionX = columnIndex * this.state.size;
-            let positionY = columns[columnIndex] * this.state.size;
+            let index = Math.floor(Math.random() * state.source.length);
+            let character = state.source[index];
+            let positionX = columnIndex * state.size;
+            let positionY = columns[columnIndex] * state.size;
 
             context.fillText(character, positionX, positionY);
-            if (positionY >= this.state.canvas.height && Math.random() > 1 - this.props.frequency) {
+            if (positionY >= state.canvas.height && Math.random() > 1 - state.frequency) {
                 columns[columnIndex] = 0;
             }
             columns[columnIndex]++;
         }
 
-        this.setState({ context, columns })
+        setState({ context, columns })
     };
 
-    updateDimensions() {
-        let canvas = this.state.canvas;
-        canvas.width = window.innerWidth;
-        canvas.height = document.body.scrollHeight;
+    const updateDimensions = () => {
+        let canvas_ = canvas.current;
+        canvas_.width = window.innerWidth;
+        canvas_.height = document.body.scrollHeight;
     }
 
-    render() {
-        let style = this.props.style ? this.props.style : {};
-        return (
-            <div style={{
-                ...style,
-                background: this.props.background,
-                width: this.props.fullscreen ? '100vw' : this.props.width + 'px',
-                height: this.props.fullscreen ? document.body.scrollHeight : this.props.height + 'px',
-                overflow: 'hidden',
-                zIndex: this.props.zIndex,
-                position: 'absolute',
-            }}>
-                <canvas ref='canvas' />
-            </div>
-        );
-    }
+    useEffect(() => {
+        if (state.fullscreen && document.body.scrollHeight !== canvas.current.height) {
+            updateDimensions();
+        }
+    })
+
+    let style = state.style ? state.style : {};
+
+    return (
+        <div style={{
+            ...style,
+            background: state.background,
+            width: state.fullscreen ? '100vw' : state.width + 'px',
+            height: state.fullscreen ? document.body.scrollHeight : state.height + 'px',
+            overflow: 'hidden',
+            zIndex: state.zIndex,
+            position: 'absolute',
+        }}>
+            <canvas ref={canvas} />
+        </div>
+    );
+
 }
