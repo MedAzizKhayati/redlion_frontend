@@ -4,9 +4,10 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
@@ -14,6 +15,7 @@ body {
   width: 100%;
   background-color: #04040D;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 
@@ -56,4 +58,14 @@ code {
   background-color: rgba(0, 0, 0, 0.2) !important;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+}
+
+.glow {
+  animation: textGlow 3000ms linear infinite 2000ms;
+}
+
+@keyframes textGlow {
+  40% {
+    text-shadow: 0 0 50px #fff;
+  }
 }

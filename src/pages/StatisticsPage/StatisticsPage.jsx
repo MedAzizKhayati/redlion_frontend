@@ -61,6 +61,7 @@ const StatisticsPage = () => {
                         title={`${data?.resultsLow}, ${data?.resultsHigh}`}
                         width={window.innerHeight * 0.6}
                         strokeWidth={3}
+                        icon={Icons.Traffic}
                     />
                     <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
                         <img width="35px" height="35px" className='predictions-icons' src={Icons.Heart} id="Avatar" />

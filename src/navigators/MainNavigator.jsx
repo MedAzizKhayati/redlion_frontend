@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { FbAiFormPage, LoginPage, SignUpPage, StatisticsPage } from "../pages";
+import { FbAiFormPage, HomePage, LoginPage, SignUpPage, StatisticsPage } from "../pages";
 import { ProtectedRoute } from "../shared/components";
 
 const MainNavigator = () => {
@@ -7,8 +7,8 @@ const MainNavigator = () => {
         <Routes>
             <Route path='/login' element={<LoginPage />} />
             <Route path="/register" element={<SignUpPage />} />
+            <Route path='/' element={<HomePage />} />
             <Route element={<ProtectedRoute />}>
-                <Route path="/" element={<FbAiFormPage />} />
                 <Route path="/predict-facebook-compaign" element={<FbAiFormPage />} />
                 <Route path="/contact" element={<h1>Contact</h1>} />
                 <Route path="/statistics" element={<StatisticsPage />} />

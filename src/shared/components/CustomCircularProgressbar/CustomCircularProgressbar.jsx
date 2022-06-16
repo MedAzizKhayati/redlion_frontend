@@ -13,7 +13,8 @@ const CustomCircularProgressbar = (props) => {
         title,
         percentage,
         width,
-        strokeWidth
+        strokeWidth,
+        icon
     } = props;
 
     return (
@@ -44,16 +45,17 @@ const CustomCircularProgressbar = (props) => {
                             justifyContent: "center",
                             fontSize: width / 10,
                         }}>
-                            <img
-                                width={width * 0.7}
-                                height={width * 0.7}
-                                src={Icons.Heart}
-                                style={{
-                                    position: "absolute",
-                                    zIndex: -1,
-                                    opacity: 0.2,
-                                }}
-                            />
+                            {icon &&
+                                <img
+                                    width={width * 0.7}
+                                    height={width * 0.7}
+                                    src={icon}
+                                    style={{
+                                        position: "absolute",
+                                        zIndex: -1,
+                                        opacity: 0.2,
+                                    }}
+                                />}
                             <p className="drawer-header">
                                 {Math.floor(Math.random() * 10_000)}, {Math.floor(Math.random() * 10_000)}
                                 {/* {title} */}

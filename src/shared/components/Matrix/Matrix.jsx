@@ -49,7 +49,7 @@ export default class Matrix extends React.Component {
             let size = this.props.colSize;
             let source = '0 0 1 1';
             let width = this.props.fullscreen ? window.innerWidth : this.props.width;
-            let height = this.props.fullscreen ? window.innerHeight : this.props.height;
+            let height = this.props.fullscreen ? document.body.scrollHeight : this.props.height;
             let canvas = this.state.canvas;
             canvas.width = width;
             canvas.height = height;
@@ -78,7 +78,7 @@ export default class Matrix extends React.Component {
         let numberOfColumns = this.state.numberOfColumns;
 
         context.fillStyle = 'rgba(6,6,19,0.1)';
-        context.fillRect(0, 0, this.state.canvas.width, this.state.canvas.width);
+        context.fillRect(0, 0, this.state.canvas.width, this.state.canvas.height);
         context.fillStyle = this.props.color;
         context.font = '700 ' + this.props.fontSize + 'px Consolas,monaco,monospace';
 
@@ -101,7 +101,7 @@ export default class Matrix extends React.Component {
     updateDimensions() {
         let canvas = this.state.canvas;
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.height = document.body.scrollHeight;
     }
 
     render() {
@@ -111,7 +111,7 @@ export default class Matrix extends React.Component {
                 ...style,
                 background: this.props.background,
                 width: this.props.fullscreen ? '100vw' : this.props.width + 'px',
-                height: this.props.fullscreen ? '100vh' : this.props.height + 'px',
+                height: this.props.fullscreen ? document.body.scrollHeight : this.props.height + 'px',
                 overflow: 'hidden',
                 zIndex: this.props.zIndex,
                 position: 'absolute',
