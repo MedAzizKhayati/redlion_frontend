@@ -69,3 +69,20 @@ code {
     text-shadow: 0 0 50px #fff;
   }
 }
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #080818;
+  border-radius: 15px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #f00;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: none;
+}

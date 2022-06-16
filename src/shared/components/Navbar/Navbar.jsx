@@ -36,7 +36,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar" style={{ position: 'sticky', width: "100%" }}>
-            <div className="brand-title">
+            <div className="brand-title" onClick={() => navigate('/')}>
                 <img width="55px" height="55px" style={{ borderRadius: '50%' }} src={image} alt='icon' />
                 <h1 className="title">
                     RED LION

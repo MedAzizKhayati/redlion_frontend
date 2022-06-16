@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { Card, CustomCircularProgressbar } from '../../shared/components';
 import Icons from '../../shared/assets/icons';
+import dnaImage from '../../shared/assets/images/dna.png';
+import graphImage from '../../shared/assets/images/graph.png';
+
 import { formatDateToApi } from '../../shared/helpers/helpers';
 
 const StatisticsPage = () => {
@@ -33,6 +36,9 @@ const StatisticsPage = () => {
                         to <strong> 456554 </strong>
                         people with this current strategy.
                     </p>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                        <img src={dnaImage} />
+                    </div>
                 </Card>
                 <Card className="blurry-bg" title="Strategy Summary" style={{ maxWidth: '90%' }}>
                     <p>Your Sector is: <strong>{data?.sector}</strong></p>
@@ -52,7 +58,7 @@ const StatisticsPage = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: "center", justifyContent: "space-around", width: "100%" }}>
                     <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
-                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Comment} id="Avatar" />
+                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Comment} />
                         <div style={{ fontSize: 'small' }}>Reach</div>
                         <div style={{ fontWeight: 600 }}>1565</div>
                     </div>
@@ -64,7 +70,7 @@ const StatisticsPage = () => {
                         icon={Icons.Traffic}
                     />
                     <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
-                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Heart} id="Avatar" />
+                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Heart} />
                         <div style={{ fontSize: 'small' }}>Impressions</div>
                         <div style={{ fontWeight: 600 }}>5478</div>
                     </div>
@@ -84,6 +90,9 @@ const StatisticsPage = () => {
                         to <strong> 800000 </strong>
                         impressions.
                     </p>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                        <img src={graphImage} />
+                    </div>
                 </Card>
             </div>
         </div >
