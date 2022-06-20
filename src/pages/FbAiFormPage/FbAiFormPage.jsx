@@ -41,9 +41,8 @@ const FbAiFormPage = () => {
         ].find(option => option.value === value)?.label;
         return label;
     }
-
     const handleSubmit = async () => {
-        setLoading(true);
+       // setLoading(true);
 
         const requestBody = {
             "sector": findLabelByValue(formData.sector),
@@ -53,13 +52,17 @@ const FbAiFormPage = () => {
             "endDate": formatDateToApi(formData.dateRange[0].endDate),
         }
 
-        // const res = await axios.post("http://192.168.100.200:5000/predict_fb_api", {
-        //     "secteur": formData.sector,
-        //     "Objectif": formData.goal,
-        //     "Montant dépensé (USD)": formData.budget,
-        //     "Commence": formatDateToApi(formData.dateRange[0].startDate),
-        //     "Fin": formatDateToApi(formData.dateRange[0].endDate),     
-        // });
+        console.log(requestBody);
+
+        const dataToSend = {
+            "secteur": formData.sector,
+            "Objectif": formData.goal,
+            "Montant dépensé (USD)": formData.budget,
+            "Commence": formatDateToApi(formData.dateRange[0].startDate),
+            "Fin": formatDateToApi(formData.dateRange[0].endDate),
+        }
+
+        // const res = await axios.post("http://localhost:8000/FB_Prediction", dataToSend);
 
         setLoading(false);
 
@@ -69,7 +72,7 @@ const FbAiFormPage = () => {
 
         // navigate('/statistics', { state: res.data });
 
-        navigate('/statistics', { state: {...requestBody} });
+        navigate('/statistics', { state: { ...requestBody } });
 
     }
 

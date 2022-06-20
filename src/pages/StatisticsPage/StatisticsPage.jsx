@@ -30,13 +30,9 @@ const StatisticsPage = () => {
                     strokeWidth={3}
                 /> */}
                 <Card title="Reach" backgroundColor="#1c1839" style={{ maxWidth: '60%' }}>
-                    <p>
-                        You're expected to <strong>reach</strong> between
-                        <strong> 15654 </strong>
-                        to <strong> 456554 </strong>
-                        people with this current strategy.
-                    </p>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                    <h4>Expected Results Between</h4>
+                    <h2>15648, 16367</h2>
+                    <div style={{ display: "flex", justifyContent: "flex-start", width: "100%" }}>
                         <img src={dnaImage} />
                     </div>
                 </Card>
@@ -46,9 +42,9 @@ const StatisticsPage = () => {
                     <p>Your Budget is: <strong>${data?.budget}</strong></p>
                     <p>
                         Your Compaign will be from	&nbsp;
-                        <strong>{formatDateToApi(data?.startDate)}</strong> 	&nbsp;
+                        <strong>{data?.startDate}</strong> 	&nbsp;
                         to 	&nbsp;
-                        <strong>{formatDateToApi(data?.endDate)}</strong>.
+                        <strong>{data?.endDate}</strong>.
                     </p>
                 </Card>
             </div>
@@ -58,7 +54,7 @@ const StatisticsPage = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: "center", justifyContent: "space-around", width: "100%" }}>
                     <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
-                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Comment} />
+                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Reach} />
                         <div style={{ fontSize: 'small' }}>Reach</div>
                         <div style={{ fontWeight: 600 }}>1565</div>
                     </div>
@@ -67,10 +63,10 @@ const StatisticsPage = () => {
                         title={`${data?.resultsLow}, ${data?.resultsHigh}`}
                         width={window.innerHeight * 0.6}
                         strokeWidth={3}
-                        icon={Icons.Traffic}
+                        icon={Icons[data.goal.replace(' ', '')]}
                     />
                     <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
-                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Heart} />
+                        <img width="35px" height="35px" className='predictions-icons' src={Icons.Impressions} />
                         <div style={{ fontSize: 'small' }}>Impressions</div>
                         <div style={{ fontWeight: 600 }}>5478</div>
                     </div>
@@ -85,10 +81,8 @@ const StatisticsPage = () => {
                 /> */}
                 <Card title="Impressions" backgroundColor="#1c1839" style={{ maxWidth: '60%' }}>
                     <p>
-                        You're expected to <strong>have</strong> between
-                        <strong> 123456 </strong>
-                        to <strong> 800000 </strong>
-                        impressions.
+                        <h4>Expected Results Between</h4>
+                        <h2>16574, 54678</h2>
                     </p>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                         <img src={graphImage} />

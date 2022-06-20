@@ -1,6 +1,5 @@
 .home-container {
     width: 100%;
-    height: 100%;
 
     .header {
         display: flex;
@@ -11,12 +10,14 @@
         font-size: 70px;
 
         h1 {
-            font-size: 70px;
+            font-size: 5.8vmax;
+            text-align: center;
         }
 
         h2 {
-            font-size: 60px;
+            font-size: 5vmax;
             color: red;
+            text-align: center;
         }
 
         .floating-arrow {
@@ -47,6 +48,7 @@
 
         .arrow-icon {
             transition: all 0.5s ease-in-out;
+
             :hover {
                 transform: scale(1);
             }
@@ -55,17 +57,59 @@
     }
 
     .content {
-        height: 100%;
-        margin-left: 150px;
-        margin-right: 150px;
-        padding: 50px;
+        // height: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 80px 20px 20px 20px;
         border-radius: 15px;
 
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         font-size: 30px;
+
+        .ai-card {
+            min-width: 33%;
+            padding: 40px 20px 40px 20px;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trynow-btn {
+            animation: floating-arrow-animation 1.5s infinite;
+            transition: all 0.5s ease-in-out;
+
+            @keyframes floating-arrow-animation {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(15px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        p {
+            font-size: x-large;
+        }
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            p {
+                font-size: large;
+                width: 100%;
+            }
+        }
     }
 
     .footer {
