@@ -111,7 +111,7 @@ const SingUpPage = () => {
                             type="Submit"
                         />
                         <div className='link'>
-                            <Link to='/'>
+                            <Link to='/login'>
                                 <p>
                                     Log In
                                 </p>

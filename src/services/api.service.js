@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAccessToken } from 'axios-jwt';
 
-export const BASE_URL = 'http://51.13.117.106:80';
+export const BASE_URL = 'https://redlion-api.herokuapp.com';
 
 export const axiosInstance = axios.create({ baseURL: BASE_URL });
 
