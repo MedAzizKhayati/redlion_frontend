@@ -1,0 +1,70 @@
+.signup-form {
+    min-width: 400px;
+    max-width: 600px;
+    width: 25vw;
+    // background-color: #14141b;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+
+    box-shadow: 0px 5px 10px 0px rgba(5, 5, 5, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+
+    .tools {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 80%;
+        font-size: small;
+
+
+        .remember-me {
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .link {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-underline-offset: 2px;
+
+        p {
+            font-size: small;
+            color: #eee;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+            text-decoration-color: red;
+        }
+
+        p:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            color: #f00;
+        }
+    }
+
+    .personal-details {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+}

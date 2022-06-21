@@ -70,7 +70,7 @@ const Navbar = () => {
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/')}>Home</a></li>
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/predict-facebook-compaign')}>Earnings</a></li>
                                 <div className="seperator" style={{ opacity: 0.5 }} />
-                                <li className="navbar-list"><a className="cool-link">Profile</a></li>
+                                <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/profile')}>Profile</a></li>
                                 <li className="navbar-list"><a className="cool-link">Settings</a></li>
                                 <li className="navbar-list"><a className="cool-link" onClick={handleLogout}>Logout</a></li>
                             </div>

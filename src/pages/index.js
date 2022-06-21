@@ -11,3 +11,5 @@ export { default as StatisticsPage } from './StatisticsPage/StatisticsPage';
 export { default as LoadingPage } from './LoadingPage/LoadingPage';
 
 export { default as HomePage } from './HomaPage/HomaPage';
+
+export { default as ProfilePage } from './ProfilePage/ProfilePage';

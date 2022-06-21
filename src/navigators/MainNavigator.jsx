@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { FbAiFormPage, HomePage, LoginPage, SignUpPage, StatisticsPage } from "../pages";
+import { FbAiFormPage, HomePage, LoginPage, ProfilePage, SignUpPage, StatisticsPage } from "../pages";
 import { ProtectedRoute } from "../shared/components";
 
 const MainNavigator = () => {
@@ -12,6 +12,7 @@ const MainNavigator = () => {
                 <Route path="/predict-facebook-compaign" element={<FbAiFormPage />} />
                 <Route path="/contact" element={<h1>Contact</h1>} />
                 <Route path="/statistics" element={<StatisticsPage />} />
+                <Route path="/profile" element={<ProfilePage/>} />
             </Route>
             <Route path="*" element={<h1> 404 Not Found </h1>} />
         </Routes>

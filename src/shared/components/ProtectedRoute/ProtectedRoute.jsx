@@ -14,7 +14,7 @@ const ProtectedRoute = () => {
     return isAuthenticated ? (
         <Outlet />
     ) : (
-        toast.info('Log in to continue!') &&
+        toast.info('Log in to continue!' ,{hideProgressBar: true}) &&
         <Navigate replace to="/login" state={{ from: location }} />
     );
 }

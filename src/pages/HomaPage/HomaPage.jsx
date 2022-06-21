@@ -81,13 +81,14 @@ const HomePage = () => {
                         <Button
                             color='secondary'
                             size='large'
-                            className='trynow-btn'
+                            // className='trynow-btn'
                             sx={{
                                 fontSize: '2rem',
                             }}
                             onClick={() => navigate('/predict-google-compaign')}
+                            disabled
                         >
-                            Try now
+                            Coming Soon
                         </Button>
                     </div>
 
