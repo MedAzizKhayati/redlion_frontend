@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
-import image from '../../shared/assets/images/logo.png';
 import { AiOutlineMail, AiFillUnlock } from "react-icons/ai";
 import { Link, useLocation } from 'react-router-dom';
 import { Checkbox } from '@mui/material';
@@ -20,7 +19,7 @@ const LoginPage = () => {
     const { authState, authDispatch } = useContext(GlobalContext);
     const [disabled, setDisabled] = useState(false);
 
-    const handleSubmit = async (values, toastify = true) => {
+    const handleSubmit = async (values) => {
         const id = toast.loading('Logging in...');
         try {
             setDisabled(true);
@@ -52,7 +51,6 @@ const LoginPage = () => {
 
     return (
         <div className='login-form'>
-            {/* <img width="150px" height="150px" style={{ borderRadius: '50%' }} src={image} id="Avatar" /> */}
             <h1>Log In</h1>
             <Formik
                 validationSchema={loginValidationSchema}

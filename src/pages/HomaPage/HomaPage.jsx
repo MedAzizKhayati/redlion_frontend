@@ -5,6 +5,9 @@ import { Button } from '@mui/material';
 import Icons from '../../shared/assets/icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import TypeWriterEffect from 'react-typewriter-effect';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 
 const HomePage = () => {
     const contentRef = useRef(null);
@@ -23,13 +26,17 @@ const HomePage = () => {
 
 
     return (
-        <div className="home-container" style={{ height }} >
+        <div className="home-container" style={{ height }}>
             <div className='header'>
-                <h1 className='glow'>
-                    THE RED LION MATRIX
-                </h1>
-                <h2 >
-                    Digital Marketing Intelligence
+                <TypeWriterEffect
+                    startDelay={50}
+                    cursorColor="red"
+                    text="THE REDLION MATRIX"
+                    typeSpeed={85}
+                />
+
+                <h2 className='glow' >
+                    DIGITAL MARKETING SOLUTIONS
                 </h2>
                 <div
                     className='floating-arrow'
@@ -43,63 +50,62 @@ const HomePage = () => {
                 </div>
             </div>
             <div className='content blurry-bg' ref={contentRef} >
-                <div className="ai-card">
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <img width={height / 5} height={height / 5} src={Icons.MetaLogo} />
-                    </div>
+                <Fade bottom>
+                    <div className="ai-card active" onClick={() => navigate('/predict-facebook-compaign')} >
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <img width={height / 6} height={height / 6} src={Icons.MetaLogo} alt="meta logo" />
+                        </div>
 
-                    <h2 style={{ textAlign: "center" }} > Meta </h2>
-                    <p>
-                        The Meta Model is an AI solution developed by the Red Lion Team in order to
-                        help companies choose their Meta marketing strategy
-                        wisely and effectively.
-                    </p>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <Button
-                            color='secondary'
-                            className='trynow-btn'
-                            sx={{
-                                fontSize: '2rem',
-                            }}
-                            onClick={() => navigate('/predict-facebook-compaign')}
-                        >
-                            Try now
-                        </Button>
+                        <h2 style={{ textAlign: "center" }} > Meta </h2>
+                        <p>
+                            The Meta Model is an AI solution developed by the Red Lion Team in order to
+                            help companies choose their Meta marketing strategy
+                            wisely and effectively.
+                        </p>
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <Button
+                                color='secondary'
+                                className='trynow-btn'
+                                sx={{
+                                    fontSize: '2rem',
+                                }}
+                            >
+                                Try now
+                            </Button>
+                        </div>
                     </div>
-                </div>
-                <div className="ai-card">
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <img width={height / 5} height={height / 5} src={Icons.GoogleLogo} />
-                    </div>
-                    <h2 style={{ textAlign: "center" }} > Google </h2>
-                    <p>
-                        The Google Model is an AI solution developed by the Red Lion Team in order to
-                        help companies choose their Google marketing strategy
-                        wisely and effectively.
-                    </p>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <Button
-                            color='secondary'
-                            size='large'
-                            // className='trynow-btn'
-                            sx={{
-                                fontSize: '2rem',
-                            }}
-                            onClick={() => navigate('/predict-google-compaign')}
-                            disabled
-                        >
-                            Coming Soon
-                        </Button>
-                    </div>
+                </Fade>
+                <Fade bottom>
+                    <div className="ai-card">
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <img width={height / 6} height={height / 6} src={Icons.GoogleLogo} alt="google logo" />
+                        </div>
+                        <h2 style={{ textAlign: "center" }} > Google </h2>
+                        <p>
+                            The Google Model is an AI solution developed by the Red Lion Team in order to
+                            help companies choose their Google marketing strategy
+                            wisely and effectively.
+                        </p>
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <Button
+                                color='secondary'
+                                size='large'
+                                // className='trynow-btn'
+                                sx={{
+                                    fontSize: '2rem',
+                                }}
+                                onClick={() => navigate('/predict-google-compaign')}
+                                disabled
+                            >
+                                Coming Soon
+                            </Button>
+                        </div>
 
-                </div>
+                    </div>
+                </Fade>
+
             </div>
-            {/* <div className='footer'>
-                <h1>
-                    RED LION
-                </h1>
-            </div> */}
-        </div>
+        </div >
     );
 }
 

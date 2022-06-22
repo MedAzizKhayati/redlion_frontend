@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { buildStyles, CircularProgressbarWithChildren } from "react-circular-progressbar";
-import Icons from "../../assets/icons";
 
 const CustomCircularProgressbar = (props) => {
     const [value, setValue] = useState(0);
@@ -58,11 +57,12 @@ const CustomCircularProgressbar = (props) => {
                                         maxWidth: '70%',
                                         height: 'auto'
                                     }}
+                                    alt="icon"
                                 />}
-                            <p className="drawer-header">
+                            <div className="drawer-header">
                                 {/* {Math.floor(Math.random() * 10_000)}, {Math.floor(Math.random() * 10_000)} */}
                                 {title}
-                            </p>
+                            </div>
                         </div>
                     </CircularProgressbarWithChildren>
                 </div>

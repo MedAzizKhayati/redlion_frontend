@@ -3,8 +3,6 @@ import * as yup from 'yup'
 import { CustomButton, CustomInput } from '../../shared/components';
 import './styles.scss';
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
-
-import { useNavigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalProvider';
 import { updateProfile } from '../../services/profile.service';
@@ -12,7 +10,6 @@ import { toast } from 'react-toastify';
 
 
 const ProfilePage = () => {
-    const navigate = useNavigate();
     const {
         authState: {
             user
@@ -51,7 +48,6 @@ const ProfilePage = () => {
 
     return (
         <div className='profile-form'>
-            {/* <img width="150px" height="k150px" style={{ borderRadius: '50%' }} src={image} /> */}
             <h1>Profile</h1>
             <Formik
                 validationSchema={loginValidationSchema}

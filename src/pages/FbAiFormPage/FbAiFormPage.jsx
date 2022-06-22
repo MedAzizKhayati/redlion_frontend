@@ -6,7 +6,7 @@ import data from "./Data";
 import './styles.scss';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { formatDateToApi, formatDateToView } from "../../shared/helpers/helpers";
+import { formatDateToApi } from "../../shared/helpers/helpers";
 import { toast } from "react-toastify";
 
 const FbAiFormPage = () => {
@@ -43,19 +43,7 @@ const FbAiFormPage = () => {
         return label;
     }
     const handleSubmit = async () => {
-        const answer = window.confirm('Are you sure you want to submit!')
-        if (!answer) return;
-
         setLoading(true);
-
-        const requestBody = {
-            "sector": findLabelByValue(formData.sector),
-            "goal": findLabelByValue(formData.goal),
-            "budget": formData.budget,
-            "startDate": formatDateToView(formData.dateRange[0].startDate),
-            "endDate": formatDateToView(formData.dateRange[0].endDate),
-        }
-
 
         const dataToSend = {
             "sector": findLabelByValue(formData.sector),//formData.sector,
@@ -67,8 +55,8 @@ const FbAiFormPage = () => {
         try {
             const data = (await axios.post("https://redlion-ml-api.herokuapp.com/FB_Prediction", dataToSend)).data;
 
-            for(let key in data){
-                if(Array.isArray(data[key])){
+            for (let key in data) {
+                if (Array.isArray(data[key])) {
                     for (let index = 0; index < data[key].length; index++) {
                         data[key][index] = Math.floor(data[key][index]);
                     }

@@ -10,18 +10,18 @@
         font-size: 70px;
 
         h1 {
-            font-size: 5.8vmax;
+            font-size: 5vmax;
             text-align: center;
+            color: red;
         }
 
         h2 {
-            font-size: 5vmax;
-            color: red;
+            font-size: 4.5vmax;
             text-align: center;
         }
 
         .floating-arrow {
-            position: absolute;
+            position: sticky;
             bottom: 15px;
             animation: floating-arrow-animation 1.5s infinite;
             transition: all 0.5s ease-in-out;
@@ -57,7 +57,6 @@
     }
 
     .content {
-        // height: 100%;
         margin-left: 5%;
         margin-right: 5%;
         padding: 80px 20px 20px 20px;
@@ -65,11 +64,12 @@
 
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         font-size: 30px;
 
         .ai-card {
-            min-width: 33%;
+            max-width: 450px;
+            height: 100%;
             padding: 40px 20px 40px 20px;
             margin: 20px;
             background-color: rgba(255, 255, 255, 0.05);
@@ -78,6 +78,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            transition: all 0.5s ease-in-out;
+
+        }
+
+        .ai-card.active:hover {
+            transform: scale(1.01);
+            background-color: rgba(255, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .trynow-btn {
@@ -105,6 +113,7 @@
 
         @media screen and (max-width: 900px) {
             flex-direction: column;
+
             p {
                 font-size: large;
                 width: 100%;

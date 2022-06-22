@@ -39,7 +39,7 @@ const Navbar = () => {
             <div className="brand-title" onClick={() => navigate('/')}>
                 <img width="55px" height="55px" style={{ borderRadius: '50%' }} src={image} alt='icon' />
                 <h1 className="title">
-                    RED LION
+                    REDLION
                 </h1>
             </div>
             <div className="navbar-links">
@@ -71,7 +71,7 @@ const Navbar = () => {
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/predict-facebook-compaign')}>Meta Compaign</a></li>
                                 <div className="seperator" style={{ opacity: 0.5 }} />
                                 <li className="navbar-list"><a className="cool-link" onClick={() => navigate('/profile')}>Profile</a></li>
-                                <li className="navbar-list"><a className="cool-link">Settings</a></li>
+                                {/* <li className="navbar-list"><a className="cool-link">Settings</a></li> */}
                                 <li className="navbar-list"><a className="cool-link" onClick={handleLogout}>Logout</a></li>
                             </div>
                         </Drawer>

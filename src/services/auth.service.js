@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAuthTokens, clearAuthTokens, getAccessToken } from 'axios-jwt';
+import { setAuthTokens, clearAuthTokens } from 'axios-jwt';
 import { axiosInstance, BASE_URL } from './api.service';
 
 export const login = async (params) => {

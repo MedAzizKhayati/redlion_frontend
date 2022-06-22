@@ -1,13 +1,11 @@
 import { ThemeProvider } from '@mui/material/styles';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import MainNavigator from './MainNavigator';
 import DefaultTheme from '../shared/themes/DefaultTheme';
-import { Navbar, ParticlesBackground, Matrix } from '../shared/components';
+import { Navbar, Matrix } from '../shared/components';
 import { GlobalContext } from '../context/GlobalProvider';
 import { LoadingPage } from '../pages';
-import { ref } from 'yup';
-
 
 const GlobalNavigator = () => {
     const {
@@ -17,11 +15,8 @@ const GlobalNavigator = () => {
         }
     } = useContext(GlobalContext);
 
-
     return (
         <ThemeProvider theme={DefaultTheme}>
-
-            {/* <ParticlesBackground /> */}
             {
                 !loading &&
                 <Matrix
@@ -36,12 +31,8 @@ const GlobalNavigator = () => {
                     <Navbar />
                 }
                 <div id="main">
-                    {
-                        loading ?
-                            <LoadingPage />
-                            :
-                            < MainNavigator />
-                    }
+                    <LoadingPage />
+                    {loading || < MainNavigator />}
                 </div>
 
             </BrowserRouter>

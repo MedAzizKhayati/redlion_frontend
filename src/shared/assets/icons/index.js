@@ -21,7 +21,7 @@ import Reach from './reach.png';
 import MetaLogo from './meta.png'
 
 
-export default {
+const Icons = {
     Messages,
     Conversions,
     Likes,
@@ -34,3 +34,5 @@ export default {
     Reach,
     MetaLogo
 }
+
+export default Icons;

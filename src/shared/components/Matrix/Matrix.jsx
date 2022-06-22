@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { set } from 'lodash';
 
-export default (props) => {
-    const propTypes = {
-        width: PropTypes.number,
-        height: PropTypes.number,
-        fullscreen: PropTypes.bool,
-        colSize: PropTypes.number,
-        fontSize: PropTypes.number,
-        interval: PropTypes.number,
-        color: PropTypes.string,
-        background: PropTypes.string,
-        frequency: PropTypes.number,
-        speed: PropTypes.number,
-        style: PropTypes.object,
-        zIndex: PropTypes.number
-    };
+const propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
+    fullscreen: PropTypes.bool,
+    colSize: PropTypes.number,
+    fontSize: PropTypes.number,
+    interval: PropTypes.number,
+    color: PropTypes.string,
+    background: PropTypes.string,
+    frequency: PropTypes.number,
+    speed: PropTypes.number,
+    style: PropTypes.object,
+    zIndex: PropTypes.number
+};
 
+const Matrix = (props) => {
     const defaultProps = {
         width: 640,
         height: 480,
@@ -59,7 +58,7 @@ export default (props) => {
         }
 
         setState({ canvas: canvas.current, columns, context, size, source, numberOfColumns });
-        
+
         if (state.fullscreen)
             window.addEventListener('resize', updateDimensions);
 
@@ -131,3 +130,5 @@ export default (props) => {
     );
 
 }
+
+export default Matrix;
