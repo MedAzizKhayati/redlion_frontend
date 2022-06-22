@@ -14,11 +14,19 @@ const StatisticsPage = () => {
     const data = location.state;
 
     const [value, setValue] = useState(0);
-
+    const [diameter, setDiameter] = useState(Math.min(window.innerHeight * 0.6, window.innerWidth * 0.8));
 
     useEffect(() => {
         setValue(Math.floor(Math.random() * 50) + 50);
     }, []);
+
+    
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setDiameter(Math.min(window.innerHeight * 0.6, window.innerWidth * 0.8));
+        })
+    }, [])
 
 
     return (
@@ -29,14 +37,14 @@ const StatisticsPage = () => {
                     width={100}
                     strokeWidth={3}
                 /> */}
-                <Card title="Reach" backgroundColor="#1c1839" style={{ maxWidth: '60%' }}>
+                <Card title="Reach" backgroundColor="#1c1839" style={{ maxWidth: 'max-content', marginBottom: 10 }}>
                     <h4>Expected Results Between</h4>
                     <h2>15648, 16367</h2>
                     <div style={{ display: "flex", justifyContent: "flex-start", width: "100%" }}>
                         <img src={dnaImage} />
                     </div>
                 </Card>
-                <Card className="blurry-bg" title="Strategy Summary" style={{ maxWidth: '90%' }}>
+                <Card className="blurry-bg" title="Strategy Summary" style={{ maxWidth: 'max-content', gridRowStart: 3 }}>
                     <p>Your Sector is: <strong>{data?.sector}</strong></p>
                     <p>Your Goal is: <strong>{data?.goal}</strong></p>
                     <p>Your Budget is: <strong>${data?.budget}</strong></p>
@@ -49,11 +57,11 @@ const StatisticsPage = () => {
                 </Card>
             </div>
             <div className="Section2">
-                <div style={{ marginBottom: 50 }}>
-                    <h1 className='drawer-header' style={{ fontSize: "xxx-large" }}>Global Statistics</h1>
+                <div style={{ marginBottom: 40 }}>
+                    <h1 className='drawer-header' style={{ fontSize: "xxx-large", textAlign: "center" }}>Global Statistics</h1>
                 </div>
                 <div style={{ display: 'flex', alignItems: "center", justifyContent: "space-around", width: "100%" }}>
-                    <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
+                    <div id="info">
                         <img width="35px" height="35px" className='predictions-icons' src={Icons.Reach} />
                         <div style={{ fontSize: 'small' }}>Reach</div>
                         <div style={{ fontWeight: 600 }}>1565</div>
@@ -61,11 +69,11 @@ const StatisticsPage = () => {
 
                     <CustomCircularProgressbar
                         title={`${data?.resultsLow}, ${data?.resultsHigh}`}
-                        width={window.innerHeight * 0.6}
+                        width={diameter}
                         strokeWidth={3}
                         icon={Icons[data.goal.replace(' ', '')]}
                     />
-                    <div style={{ display: 'flex', alignItems: "center", flexDirection: "column", margin: "5px" }}>
+                    <div id="info">
                         <img width="35px" height="35px" className='predictions-icons' src={Icons.Impressions} />
                         <div style={{ fontSize: 'small' }}>Impressions</div>
                         <div style={{ fontWeight: 600 }}>5478</div>
@@ -79,7 +87,7 @@ const StatisticsPage = () => {
                     width={200}
                     strokeWidth={3}
                 /> */}
-                <Card title="Impressions" backgroundColor="#1c1839" style={{ maxWidth: '60%' }}>
+                <Card title="Impressions" backgroundColor="#1c1839" style={{ maxWidth: 'max-content' }}>
                     <p>
                         <h4>Expected Results Between</h4>
                         <h2>16574, 54678</h2>

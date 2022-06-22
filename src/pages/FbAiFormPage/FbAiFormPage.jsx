@@ -77,7 +77,7 @@ const FbAiFormPage = () => {
     }
 
     return (
-        <div className="Form-container" style={{ minHeight: 450, minWidth: 400, display: "flex", flexDirection: "column", alignItems: 'center' }}>
+        <div className="Form-container">
             <h1 style={{ textAlign: 'center', flex: 1 }}>{form.title}</h1>
             <div style={{ flex: 1, width: "100%" }}>
                 {

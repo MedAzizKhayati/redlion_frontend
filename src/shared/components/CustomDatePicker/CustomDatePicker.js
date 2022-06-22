@@ -7,6 +7,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import "./styles.scss";
+import { useState, useEffect } from 'react';
 
 
 
@@ -24,6 +25,14 @@ const CustomDatePicker = (props) => {
         onChange([date.selection])
     }
 
+    const [months, setMonths] = useState(window.innerWidth > 800 ? 2: 1);
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setMonths(window.innerWidth > 800 ? 2: 1);
+        })
+    }, [])
+
     return (
         <div className="DateRange-container">
             <DateRange
@@ -32,7 +41,7 @@ const CustomDatePicker = (props) => {
                 onChange={handleSelect}
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
-                months={2}
+                months={months}
                 direction="horizontal"
                 {...otherProps}
             />

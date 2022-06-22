@@ -27,7 +27,7 @@ const CustomCircularProgressbar = (props) => {
                     backgroundColor: 'rgba(0, 0, 0, 0.7)',
                 })}
             >
-                <div style={{ transform: `translateY(-${width / 125}px)`, height: width * 1.02, width: width * 1.02 }}>
+                <div style={{ transform: `translateY(-${width / 125}px)`, height: "100%", width: "100%" }}>
                     <CircularProgressbarWithChildren
                         value={percentage || value}
                         strokeWidth={strokeWidth}
@@ -47,13 +47,13 @@ const CustomCircularProgressbar = (props) => {
                         }}>
                             {icon &&
                                 <img
-                                    width={width * 0.7}
-                                    height={width * 0.7}
                                     src={icon}
                                     style={{
                                         position: "absolute",
                                         zIndex: -1,
                                         opacity: 0.2,
+                                        maxWidth: '70%',
+                                        height: 'auto'
                                     }}
                                 />}
                             <p className="drawer-header">

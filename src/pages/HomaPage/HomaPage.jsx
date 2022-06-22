@@ -26,10 +26,10 @@ const HomePage = () => {
         <div className="home-container" style={{ height }} >
             <div className='header'>
                 <h1 className='glow'>
-                    Welcome to RED LION
+                    THE RED LION MATRIX
                 </h1>
                 <h2 >
-                    Marketing Solutions
+                    Digital Marketing Intelligence
                 </h2>
                 <div
                     className='floating-arrow'
@@ -48,7 +48,7 @@ const HomePage = () => {
                         <img width={height / 5} height={height / 5} src={Icons.MetaLogo} />
                     </div>
 
-                    <h2 style={{ textAlign: "center" }} > Meta Ads Model</h2>
+                    <h2 style={{ textAlign: "center" }} > Meta </h2>
                     <p>
                         The Meta Model is an AI solution developed by the Red Lion Team in order to
                         help companies choose their Meta marketing strategy
@@ -71,7 +71,7 @@ const HomePage = () => {
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                         <img width={height / 5} height={height / 5} src={Icons.GoogleLogo} />
                     </div>
-                    <h2 style={{ textAlign: "center" }} > Google Ads Model </h2>
+                    <h2 style={{ textAlign: "center" }} > Google </h2>
                     <p>
                         The Google Model is an AI solution developed by the Red Lion Team in order to
                         help companies choose their Google marketing strategy

@@ -50,7 +50,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className='signup-form'>
+        <div className='profile-form'>
             {/* <img width="150px" height="k150px" style={{ borderRadius: '50%' }} src={image} /> */}
             <h1>Profile</h1>
             <Formik
