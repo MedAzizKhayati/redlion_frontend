@@ -20,7 +20,7 @@ const StatisticsPage = () => {
         setValue(Math.floor(Math.random() * 50) + 50);
     }, []);
 
-    
+
 
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -39,20 +39,20 @@ const StatisticsPage = () => {
                 /> */}
                 <Card title="Reach" backgroundColor="#1c1839" style={{ maxWidth: 'max-content', marginBottom: 10 }}>
                     <h4>Expected Results Between</h4>
-                    <h2>15648, 16367</h2>
+                    <h2>{data?.reach_margins?.join(', ')}</h2>
                     <div style={{ display: "flex", justifyContent: "flex-start", width: "100%" }}>
                         <img src={dnaImage} />
                     </div>
                 </Card>
                 <Card className="blurry-bg" title="Strategy Summary" style={{ maxWidth: 'max-content', gridRowStart: 3 }}>
                     <p>Your Sector is: <strong>{data?.sector}</strong></p>
-                    <p>Your Goal is: <strong>{data?.goal}</strong></p>
-                    <p>Your Budget is: <strong>${data?.budget}</strong></p>
+                    <p>Your Goal is: <strong>{data?.objective}</strong></p>
+                    <p>Your Budget is: <strong>${data?.amount}</strong></p>
                     <p>
                         Your Compaign will be from	&nbsp;
-                        <strong>{data?.startDate}</strong> 	&nbsp;
+                        <strong>{data?.start_date}</strong> 	&nbsp;
                         to 	&nbsp;
-                        <strong>{data?.endDate}</strong>.
+                        <strong>{data?.end_date}</strong>.
                     </p>
                 </Card>
             </div>
@@ -64,19 +64,19 @@ const StatisticsPage = () => {
                     <div id="info">
                         <img width="35px" height="35px" className='predictions-icons' src={Icons.Reach} />
                         <div style={{ fontSize: 'small' }}>Reach</div>
-                        <div style={{ fontWeight: 600 }}>1565</div>
+                        <div style={{ fontWeight: 600 }}>{data?.reach}</div>
                     </div>
 
                     <CustomCircularProgressbar
-                        title={`${data?.resultsLow}, ${data?.resultsHigh}`}
+                        title={data?.result_margins?.join(', ')}
                         width={diameter}
                         strokeWidth={3}
-                        icon={Icons[data.goal.replace(' ', '')]}
+                        icon={Icons[data?.objective.replace(' ', '')]}
                     />
                     <div id="info">
                         <img width="35px" height="35px" className='predictions-icons' src={Icons.Impressions} />
                         <div style={{ fontSize: 'small' }}>Impressions</div>
-                        <div style={{ fontWeight: 600 }}>5478</div>
+                        <div style={{ fontWeight: 600 }}>{data?.impressions}</div>
                     </div>
                 </div>
 
@@ -88,10 +88,8 @@ const StatisticsPage = () => {
                     strokeWidth={3}
                 /> */}
                 <Card title="Impressions" backgroundColor="#1c1839" style={{ maxWidth: 'max-content' }}>
-                    <p>
-                        <h4>Expected Results Between</h4>
-                        <h2>16574, 54678</h2>
-                    </p>
+                    <h4>Expected Results Between</h4>
+                    <h2>{data?.impressions_margins?.join(', ')}</h2>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                         <img src={graphImage} />
                     </div>

@@ -17,7 +17,7 @@ const DATA = [
         options: [
             { value: 'Interaction', label: 'Interaction' },
             { value: 'Trafic', label: 'Traffic' },
-            { value: 'Génération de prospects', label: 'Lead Generation' },
+            { value: 'lead generation', label: 'Lead Generation' },
             { value: 'CONVERSIONS', label: 'Conversions' },
             { value: "Mentions J'aime une Page", label: 'Likes' },
             { value: 'Messages', label: 'Messages' },

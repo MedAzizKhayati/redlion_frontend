@@ -37,14 +37,17 @@ const CustomCircularProgressbar = (props) => {
                             pathTransitionDuration: 3,
                         })}
                     >
-                        <div style={{
-                            height: "100%",
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: width / 10,
-                        }}>
+                        <div
+                            style={{
+                                height: "100%",
+                                width: "100%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: width / 10,
+                            }}
+                            
+                        >
                             {icon &&
                                 <img
                                     src={icon}
@@ -57,8 +60,8 @@ const CustomCircularProgressbar = (props) => {
                                     }}
                                 />}
                             <p className="drawer-header">
-                                {Math.floor(Math.random() * 10_000)}, {Math.floor(Math.random() * 10_000)}
-                                {/* {title} */}
+                                {/* {Math.floor(Math.random() * 10_000)}, {Math.floor(Math.random() * 10_000)} */}
+                                {title}
                             </p>
                         </div>
                     </CircularProgressbarWithChildren>

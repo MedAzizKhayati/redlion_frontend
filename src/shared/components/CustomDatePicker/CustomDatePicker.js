@@ -75,7 +75,7 @@ const CustomDatePicker = (props) => {
                     loading={loading}
                     onClick={handleSubmit}
                 >
-                    {loading ? "Saving..." : "Save"}
+                    {loading ? "Submitting..." : "Submit"}
                 </LoadingButton>
             </div>
         </div>

@@ -6,7 +6,8 @@ import data from "./Data";
 import './styles.scss';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { formatDateToApi } from "../../shared/helpers/helpers";
+import { formatDateToApi, formatDateToView } from "../../shared/helpers/helpers";
+import { toast } from "react-toastify";
 
 const FbAiFormPage = () => {
     const navigate = useNavigate();
@@ -42,37 +43,46 @@ const FbAiFormPage = () => {
         return label;
     }
     const handleSubmit = async () => {
-       // setLoading(true);
+        const answer = window.confirm('Are you sure you want to submit!')
+        if (!answer) return;
+
+        setLoading(true);
 
         const requestBody = {
             "sector": findLabelByValue(formData.sector),
             "goal": findLabelByValue(formData.goal),
             "budget": formData.budget,
-            "startDate": formatDateToApi(formData.dateRange[0].startDate),
-            "endDate": formatDateToApi(formData.dateRange[0].endDate),
+            "startDate": formatDateToView(formData.dateRange[0].startDate),
+            "endDate": formatDateToView(formData.dateRange[0].endDate),
         }
 
-        console.log(requestBody);
 
         const dataToSend = {
-            "secteur": formData.sector,
-            "Objectif": formData.goal,
-            "Montant dépensé (USD)": formData.budget,
-            "Commence": formatDateToApi(formData.dateRange[0].startDate),
-            "Fin": formatDateToApi(formData.dateRange[0].endDate),
+            "sector": findLabelByValue(formData.sector),//formData.sector,
+            "objective": findLabelByValue(formData.goal),//formData.goal,
+            "amount": formData.budget,
+            "start_date": formatDateToApi(formData.dateRange[0].startDate),
+            "end_date": formatDateToApi(formData.dateRange[0].endDate),
         }
+        try {
+            const data = (await axios.post("https://redlion-ml-api.herokuapp.com/FB_Prediction", dataToSend)).data;
 
-        // const res = await axios.post("http://localhost:8000/FB_Prediction", dataToSend);
+            for(let key in data){
+                if(Array.isArray(data[key])){
+                    for (let index = 0; index < data[key].length; index++) {
+                        data[key][index] = Math.floor(data[key][index]);
+                    }
+                }
+            }
 
-        setLoading(false);
-
-        // console.log(formData);
-
-        // console.log(res.data);
-
-        // navigate('/statistics', { state: res.data });
-
-        navigate('/statistics', { state: { ...requestBody } });
+            setLoading(false);
+            navigate('/statistics', { state: { ...data } });
+            console.log(data);
+        } catch (err) {
+            setLoading(false);
+            toast.error('Something wrong has occured, Try again later!')
+            console.log(err);
+        }
 
     }
 
