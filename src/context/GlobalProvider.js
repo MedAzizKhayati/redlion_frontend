@@ -9,18 +9,26 @@ const GlobalProvider = ({ children }) => {
     const [authState, authDispatch] = useReducer(AuthReducer, DEFAULT_AUTH_STATE);
 
     const init = async () => {
+        const startTime = +new Date();
         try {
             const user = await getAuthUser();
-            authDispatch({
-                type: "LOGIN",
-                payload: user
-            });
+            const endTime = +new Date();
+            setTimeout(() => {
+                authDispatch({
+                    type: "LOGIN",
+                    payload: user
+                });
+            }, Math.max(1000 - endTime + startTime, 0));
+
         } catch (error) {
+            const endTime = +new Date();
             console.log(error?.response?.data);
-            authDispatch({
-                type: "LOADED"
-            });
-            logout();
+            setTimeout(() => {
+                authDispatch({
+                    type: "LOADED"
+                });
+                logout();
+            }, Math.max(1000 - endTime + startTime, 0));
         }
     }
 

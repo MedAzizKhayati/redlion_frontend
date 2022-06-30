@@ -8,14 +8,22 @@ import { useState } from 'react';
 import TypeWriterEffect from 'react-typewriter-effect';
 import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
+import useIsInViewport from '../../shared/hooks/useInViewport';
 
 const HomePage = () => {
     const contentRef = useRef(null);
+    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
+    const isVideoInViewport = useIsInViewport(videoRef);
     const navigate = useNavigate();
     const [height, setHeight] = useState(document.body.clientHeight);
 
     const scrollToContent = () => {
         contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const scrollToVideo = () => {
+        videoContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     useEffect(() => {
@@ -25,8 +33,18 @@ const HomePage = () => {
     }, []);
 
 
+    useEffect(() => {
+        if (isVideoInViewport) {
+            videoRef.current.play();
+        }
+        else {
+            videoRef.current.pause();
+        }
+    }, [isVideoInViewport]);
+
     return (
         <div className="home-container" style={{ height }}>
+
             <div className='header'>
                 <TypeWriterEffect
                     startDelay={50}
@@ -40,6 +58,23 @@ const HomePage = () => {
                 </h2>
                 <div
                     className='floating-arrow'
+                    onClick={scrollToVideo}
+                >
+                    <KeyboardArrowDownOutlinedIcon
+                        color='secondary'
+                        fontSize='inherit'
+                        className='arrow-icon'
+                    />
+                </div>
+            </div>
+
+            <div className='video-container' ref={videoContainerRef} >
+                <video ref={videoRef} muted  >
+                    <source src="https://redlionmatrix.tech/wp-content/uploads/2022/01/matrixxx.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    className='floating-arrow'
                     onClick={scrollToContent}
                 >
                     <KeyboardArrowDownOutlinedIcon
@@ -49,8 +84,10 @@ const HomePage = () => {
                     />
                 </div>
             </div>
+
+
             <div className='content blurry-bg' ref={contentRef} >
-                <Fade bottom>
+                <Zoom>
                     <div className="ai-card active" onClick={() => navigate('/predict-facebook-compaign')} >
                         <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                             <img width={height / 6} height={height / 6} src={Icons.MetaLogo} alt="meta logo" />
@@ -74,8 +111,8 @@ const HomePage = () => {
                             </Button>
                         </div>
                     </div>
-                </Fade>
-                <Fade bottom>
+                </Zoom>
+                <Zoom>
                     <div className="ai-card">
                         <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                             <img width={height / 6} height={height / 6} src={Icons.GoogleLogo} alt="google logo" />
@@ -102,10 +139,14 @@ const HomePage = () => {
                         </div>
 
                     </div>
-                </Fade>
-
+                </Zoom>
             </div>
-        </div >
+            <div className='footer blurry-bg'>
+                <p>
+                    2021 © Redlionandcompany, All rights reserved.
+                </p>
+            </div>
+        </div>
     );
 }
 

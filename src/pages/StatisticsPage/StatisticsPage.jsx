@@ -6,6 +6,8 @@ import Icons from '../../shared/assets/icons';
 import dnaImage from '../../shared/assets/images/dna.png';
 import graphImage from '../../shared/assets/images/graph.png';
 import { config, useSpring, animated } from 'react-spring';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 
 const StatisticsPage = () => {
     const location = useLocation();
@@ -53,24 +55,30 @@ const StatisticsPage = () => {
     return (
         <div className="Statistics-container">
             <div className="Section1">
-                <Card title="Reach" backgroundColor="#1c1839" style={{ marginBottom: 10 }}>
-                    <h4>Expected Results Between</h4>
-                    <h2>{data?.reach_margins?.join(', ')}</h2>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <img src={dnaImage} />
-                    </div>
-                </Card>
+                <Zoom>
+                    <Card title="Reach" backgroundColor="#1c1839" style={{ marginBottom: 10 }}>
+                        <h4>Expected Results Between</h4>
+                        <h2>{data?.reach_margins?.join(', ')}</h2>
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <img src={dnaImage} />
+                        </div>
+                    </Card>
+                </Zoom>
+
                 <Card className="blurry-bg" title="Strategy Summary" style={{ gridRowStart: 3 }}>
-                    <p>Your Sector is: <strong>{data?.sector} </strong></p>
-                    <p>Your Goal is: <strong>{data?.objective}</strong></p>
-                    <p>Your Budget is: <strong>${data?.amount}</strong></p>
-                    <p>
-                        Your Compaign will be from	&nbsp;
-                        <strong>{data?.start_date}</strong> 	&nbsp;
-                        to 	&nbsp;
-                        <strong>{data?.end_date}</strong>.
-                    </p>
+                    <Fade bottom>
+                        <p>Your Sector is: <strong>{data?.sector} </strong></p>
+                        <p>Your Goal is: <strong>{data?.goal}</strong></p>
+                        <p>Your Budget is: <strong>${data?.amount}</strong></p>
+                        <p>
+                            Your Compaign will be from	&nbsp;
+                            <strong>{data?.start_date}</strong> 	&nbsp;
+                            to 	&nbsp;
+                            <strong>{data?.end_date}</strong>.
+                        </p>
+                    </Fade>
                 </Card>
+
             </div>
             <div className="Section2">
                 <div style={{ marginBottom: 40 }}>
@@ -104,13 +112,15 @@ const StatisticsPage = () => {
 
             </div>
             <div className="Section3">
-                <Card title="Impressions" backgroundColor="#1c1839" style={{}}>
-                    <h4>Expected Results Between</h4>
-                    <h2>{data?.impressions_margins?.join(', ')}</h2>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <img src={graphImage} />
-                    </div>
-                </Card>
+                <Zoom>
+                    <Card title="Impressions" backgroundColor="#1c1839" style={{}}>
+                        <h4>Expected Results Between</h4>
+                        <h2>{data?.impressions_margins?.join(', ')}</h2>
+                        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                            <img src={graphImage} />
+                        </div>
+                    </Card>
+                </Zoom>
             </div>
         </div >
     );

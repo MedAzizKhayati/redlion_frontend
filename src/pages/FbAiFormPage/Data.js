@@ -15,11 +15,11 @@ const DATA = [
         label: "Goal",
         key: 'goal',
         options: [
-            { value: 'Interaction', label: 'Interaction' },
-            { value: 'Trafic', label: 'Traffic' },
+            { value: 'post engagement', label: 'Interaction' },
+            { value: 'Traffic', label: 'Traffic' },
             { value: 'lead generation', label: 'Lead Generation' },
             { value: 'CONVERSIONS', label: 'Conversions' },
-            { value: "Mentions J'aime une Page", label: 'Likes' },
+            { value: "pages likes", label: 'Likes' },
             { value: 'Messages', label: 'Messages' },
         ]
     },

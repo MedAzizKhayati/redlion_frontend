@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { formatDateToApi } from "../../shared/helpers/helpers";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../services/api.service";
+import { predictMeta } from "../../services/meta.service";
 
 const FbAiFormPage = () => {
     const navigate = useNavigate();
@@ -46,14 +48,14 @@ const FbAiFormPage = () => {
         setLoading(true);
 
         const dataToSend = {
-            "sector": findLabelByValue(formData.sector),//formData.sector,
-            "objective": findLabelByValue(formData.goal),//formData.goal,
+            "sector": formData.sector,
+            "objective": formData.goal,
             "amount": formData.budget,
             "start_date": formatDateToApi(formData.dateRange[0].startDate),
             "end_date": formatDateToApi(formData.dateRange[0].endDate),
         }
         try {
-            const data = (await axios.post("https://redlion-ml-api.herokuapp.com/FB_Prediction", dataToSend)).data;
+            const data = await predictMeta(dataToSend);
 
             for (let key in data) {
                 if (Array.isArray(data[key])) {
@@ -62,13 +64,13 @@ const FbAiFormPage = () => {
                     }
                 }
             }
-
             setLoading(false);
-            navigate('/statistics', { state: { ...data } });
+            navigate('/statistics', { state: { ...data, goal: findLabelByValue(formData.goal) } });
             console.log(data);
         } catch (err) {
             setLoading(false);
-            toast.error('Something wrong has occured, Try again later!')
+
+            toast.error(err?.response?.data?.message || 'Something wrong has occured, Try again later!')
             console.log(err);
         }
 

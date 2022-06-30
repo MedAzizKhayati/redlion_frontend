@@ -23,7 +23,7 @@ const LoadingPage = () => {
         transition((style, item) => (
             item &&
             <animated.div className="Loading-Page" style={style} >
-                <img width="500px" height="500px" style={{ borderRadius: '50%' }} src={image} alt="Red Lion Logo" />
+                <img width="500px" height="500px" src={image} alt="Red Lion Logo" />
                 <Box sx={{ width: '350px', marginTop: 5 }}>
                     <LinearProgress />
                 </Box>
